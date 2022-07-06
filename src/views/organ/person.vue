@@ -991,22 +991,33 @@ export default {
       }
       for (; j < len; j++) {
         var aVal = a[j],
-          hashVP = hash[aVal[pid]];
-          
-          // if(data && hashVP.departName){
-          //   if(hashVP.departName != data && !hashVP.children){
-          //     hashVP.disabled = true;
+        hashVP = hash[aVal[pid]];
+        // console.info('hashVP:ssss',hashVP)
+        // if(data && hashVP.departName){
+        //   if(hashVP.departName != data && !hashVP.children){
+        //     hashVP.disabled = true;
 
-          //   }
-          // }
+        //   }
+        // }
+        let pid1;
         if (hashVP) {
           !hashVP[children] && (hashVP[children] = []);
           hashVP[children].push(aVal);
-          console.info('aVal',aVal)
+          // console.info('aVal',aVal)
           if(data && aVal.departName != data){
-            console.info(aVal.departName,'aVal')
+            // console.info(aVal,'aVal')
             aVal.disabled = true;
+            
           }
+          if(data && aVal.departName == data){
+            pid1 = aVal.parentId
+            console.info(pid1,222222)
+            
+          }
+          if(hashVP.id != pid1){
+              hashVP.disabled = true
+            }
+          // 
         } else {
           r.push(aVal);
         }
