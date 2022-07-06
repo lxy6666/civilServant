@@ -1,0 +1,187 @@
+@charset "UTF-8";
+#app{
+  .setBox{
+    display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box; /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox; /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+  }
+  .noLine{
+    -webkit-box-orient: verical;
+    -webkit-box-direction: normal;
+    -moz-box-orient: verical;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  .mL8{
+    margin-left: 8px;
+  }
+  .mL16{
+    margin-left: 16px;
+  }
+  .mL32{
+    margin-left: 32px;
+  }
+  .mR8{
+    margin-right: 8px;
+  }
+  .mR16{
+    margin-right: 16px;
+  }
+  .mR32{
+    margin-right: 32px;
+  }
+  .mT8{
+    margin-top: 8px;
+  }
+  .mT16{
+    margin-top: 16px;
+  }
+  .mT32{
+    margin-top: 32px;
+  }
+  .flex1{
+    // -webkit-box-flex: 1;
+    // -moz-box-flex: 1;
+    // box-flex: 1;
+    // -webkit-flex: 1;
+    // flex: 1;
+    flex-grow: 1;
+  }
+  .flex1r{
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    // flex-grow: 1;
+  }
+  .flex2{
+    -webkit-box-flex: 2;
+    -moz-box-flex: 2;
+    box-flex: 2;
+    -webkit-flex: 2;
+    flex: 2;
+   
+  }
+  .flex3{
+    -webkit-box-flex: 3;
+    -moz-box-flex: 3;
+    box-flex: 3;
+    -webkit-flex: 3;
+    flex: 3;
+  }
+  .flex4{
+    -webkit-box-flex: 4;
+    -moz-box-flex: 4;
+    box-flex: 4;
+    -webkit-flex: 4;
+    flex: 4;
+  }
+  .flex5{
+    -webkit-box-flex: 5;
+    -moz-box-flex: 5;
+    box-flex: 5;
+    -webkit-flex: 5;
+    flex: 5;
+  }
+  .flex6{
+    -webkit-box-flex: 6;
+    -moz-box-flex: 6;
+    box-flex: 6;
+    -webkit-flex: 6;
+    flex: 6;
+  }
+  .flex7{
+    -webkit-box-flex: 7;
+    -moz-box-flex: 7;
+    box-flex: 7;
+    -webkit-flex: 7;
+    flex: 7;
+  }
+  .flex8{
+    -webkit-box-flex: 8;
+    -moz-box-flex: 8;
+    box-flex: 8;
+    -webkit-flex: 8;
+    flex: 8;
+  }
+  .flex9{
+    -webkit-box-flex: 9;
+    -moz-box-flex: 9;
+    box-flex: 9;
+    -webkit-flex: 9;
+    flex: 9;
+  }
+  .flex10{
+    -webkit-box-flex: 10;
+    -moz-box-flex: 10;
+    box-flex: 10;
+    -webkit-flex: 10;
+    flex: 10;
+  }
+  .flex11{
+    -webkit-box-flex: 11;
+    -moz-box-flex: 11;
+    box-flex: 11;
+    -webkit-flex: 11;
+    flex: 11;
+  }
+  .flex12{
+    -webkit-box-flex: 12;
+    -moz-box-flex: 12;
+    box-flex: 12;
+    -webkit-flex: 12;
+    flex: 12;
+  }
+  .flex13{
+    -webkit-box-flex: 13;
+    -moz-box-flex: 13;
+    box-flex: 13;
+    -webkit-flex: 13;
+    flex: 13;
+  }
+  .getWidth{
+    width:0
+  }
+  .getHeight{
+    height:0
+  }
+  .getBorder{
+    border:solid 1px blue
+  }
+  .getRadius{
+    border-radius:5px;
+  }
+  .el-pagination{
+     margin-top: 16px;
+     margin-bottom:16px;
+     margin-left: 15px;
+  }
+  .queryTit{
+    position: relative;
+    top:-4px;
+    margin-left: 30px;
+  }
+  .footer{
+    position: fixed;
+    right:0;
+    bottom:0;
+    background: white;
+    z-index:1000;
+    display: block;
+    transition: width 0.28s;
+    box-shadow:0px 0px 3px rgb(170,170,170);
+  }
+  .bwidth{
+    width: calc(100% - 210px);
+  }
+  .swidth{
+    width: calc(100% - 55px);
+  }
+  // .fixed-header{
+  //   padding-right: none !important;
+  // }
+}
