@@ -28,13 +28,20 @@ export default {
   computed: {
     ...mapGetters([
       'permission_routers',
-      'sidebar'
+      'sidebar',
+      'userInfo'
     ]),
     variables() {
       return variables
     },
     isCollapse() {
       return !this.sidebar.opened
+    }
+  },
+  mounted(){
+    if(this.userInfo.role == '9'){
+      this.$store.commit('SET_ROUTERS',[])
+      // this.permission_routers = []
     }
   }
 }

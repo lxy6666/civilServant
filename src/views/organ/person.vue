@@ -441,6 +441,10 @@ export default {
           name:'观察员',
           value:'3'
         },
+        {
+          name:'普通人员',
+          value:'9'
+        },
       ],
       allpart:[],
       deptList:[],
@@ -1039,6 +1043,9 @@ export default {
       }
       if(val==4){
         return '镇领导';
+      }
+      if(val==99){
+        return '普通人员';
       }
     }
   },
