@@ -1044,7 +1044,7 @@ export default {
       if(val==4){
         return '镇领导';
       }
-      if(val==99){
+      if(val==9){
         return '普通人员';
       }
     }
