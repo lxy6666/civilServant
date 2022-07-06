@@ -247,6 +247,7 @@
         </el-form-item>
         <el-form-item label="志愿服务得分" prop="zyfwsc" class="addItem">
           <el-input
+            disabled
             v-model="addForm.zbdf"
             placeholder="志愿服务时长"
           ></el-input>
