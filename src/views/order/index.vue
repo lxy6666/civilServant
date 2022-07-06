@@ -393,6 +393,7 @@ import { parseTime } from "@/utils";
 import _URL from "../../lib/url";
 import { getAction, postAction, deleteAction, putAction } from "@/api/manage";
 import { mapGetters } from "vuex";
+import { userInfo } from 'os';
 import FileSaver from 'file-saver'
 import XLSX from 'xlsx'
 // import the component
@@ -555,7 +556,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["roles", "sidebar"]),
+    ...mapGetters(["roles", "sidebar","userInfo"]),
   },
   created() {
     let that = this;
@@ -911,15 +912,24 @@ export default {
         if (response.flag) {
               //前端数据筛选
               if(!that.query.hyzk||that.query.hyzk==""){
-                    that.tableData = response.data;
-                    that.total = response.data.length;
-                    let weici = [];
-                    for (var i = 0; i < response.data.length; i++) {
-                      if (weici.indexOf(response.data[i]["zbdf"]) == -1) {
-                        weici.push(response.data[i]["zbdf"]);
-                      }
-                    }
-                    that.weici = weici;
+                //提报员只能看自己社区的人员
+                let arr = []
+                if(that.userInfo.role == 1){
+                  arr = response.data.filter(item => {
+                    return that.getPart(item.hyzk) == that.userInfo.ssbm
+                  })
+                }else{
+                  arr = response.data;
+                }
+                that.tableData = arr;
+                that.total = arr.length;
+                let weici = [];
+                for (var i = 0; i < arr.length; i++) {
+                  if (weici.indexOf(arr[i]["zbdf"]) == -1) {
+                    weici.push(arr[i]["zbdf"]);
+                  }
+                }
+                that.weici = weici;
               }else{
                     let nowData = []
                     for (var i = 0; i < response.data.length; i++) {
