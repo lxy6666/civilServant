@@ -1039,7 +1039,7 @@ export default {
         return '审核员';
       }
       if(val==3){
-        return '普通用户';
+        return '观察员';
       }
       if(val==4){
         return '镇领导';

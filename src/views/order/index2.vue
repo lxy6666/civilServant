@@ -13,38 +13,6 @@
       >
         新增
       </el-button> -->
-      <el-input
-            clearable style="width:200px;" 
-            class="filter-item"
-            v-model="query.jdmc"
-            placeholder="请输入街道"
-          ></el-input>
-        <el-input
-          clearable style="width:200px;" 
-          class="filter-item"
-          v-model="query.community"
-          placeholder="请输入社区"
-        ></el-input>
-        <el-date-picker
-          v-model="query.nowDate"
-          type="daterange"
-          placeholder="选择日期"
-
-          class="datePicker filter-item"
-          :clearable="false"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          value-format="yyyy-MM-dd"
-        >
-      </el-date-picker>
-      <el-button
-        class="filter-item"
-        type="primary"
-        @click="searchFun"
-      >
-        搜索
-      </el-button>
       <el-button
         style="float: right"
         class="filter-item"
@@ -54,6 +22,19 @@
       >
         导出
       </el-button>
+      <el-date-picker
+          v-model="query.nowDate"
+          type="daterange"
+          placeholder="选择日期"
+     
+          class="datePicker"
+          :clearable="false"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          value-format="yyyy-MM-dd"
+        >
+      </el-date-picker>
     </div>
     <el-table
       :data="tableData"
@@ -96,13 +77,7 @@
           {{ getPart(scope.row.hyzk)}}
         </template>
       </el-table-column>
-      <el-table-column label="街道名称">
-          <template slot-scope="scope">
-          {{ scope.row.jdmc}}
-        </template>
-      </el-table-column>
       <el-table-column prop="zbdf" label="得分"> </el-table-column>
-      <el-table-column prop="xzjf" label="新增积分"> </el-table-column>
       <el-table-column label="等次">
         <template slot-scope="scope">
           {{ getDc(scope.row.zbdf) }}
@@ -501,7 +476,7 @@ export default {
         istui: "", //人员姓名
         dept: "", //部门
         hyzk:"",//人员类型
-        nowDate:[]
+        nowDate:[],
       },
       addForm: {
         id: "",
@@ -618,21 +593,6 @@ export default {
     that.getOrder()
   },
   methods: {
-    //处理数据
-    filterData(val){
-      let that = this;
-      if(val.length>15){
-        val=JSON.parse(val);
-        let id = String(val.pop());
-        let data = JSON.parse(JSON.stringify(that.allpart))
-        var queryData = data.filter(function (_data) {
-            return _data.id == id
-        });
-        return queryData[0].departName;
-      }else{
-        return '';
-      }
-    },
     getPart(val){
       let that = this;
       if(val.length>15){
@@ -948,7 +908,7 @@ export default {
         return "审核未通过";
       }
     },
-    getList(jdmc) {
+    getList() {
       // that.listLoading = true
       let that = this;
       let obj = {
@@ -960,11 +920,6 @@ export default {
       if (query.dept) {
         query.dept = query.dept[0];
       }
-      if(that.query.nowDate.length>0){
-        query.startTime= that.query.nowDate[0]
-        query.endTime= that.query.nowDate[1]
-      };
-      delete query.nowDate
       //所属地点,若有则加入查询条件
       getAction(`${_URL.zfm_findOrder}`, query).then((response) => {
         //console.log('啊啊啊啊啊'+JSON.stringify(response));
@@ -990,19 +945,6 @@ export default {
                 }else{
                     
                   arr = response.data;
-                }
-                if(query.jdmc){
-                  arr = arr.filter(item => {
-                    return item.jdmc == query.jdmc
-                  })
-                }
-                arr.forEach((item) => {
-                  item.community = that.filterData(item.hyzk)
-                })
-                if(query.community){
-                  arr = arr.filter(item => {
-                    return item.community == query.community
-                  })
                 }
                 that.tableData = arr;
                 that.total = arr.length;
@@ -1035,11 +977,6 @@ export default {
           that.$message.error(response.message);
         }
       });
-    },
-    //点击搜索
-    searchFun(){
-      let vm = this;
-      this.getList()
     },
     handleSizeChange(val) {
       let that = this;

@@ -325,6 +325,19 @@ export const asyncRouterMap = [
   },
   // {
   //   path: '',
+  //   component: Layout,  
+  //   redirect: 'order2',
+  //   children: [
+  //     {
+  //       path: 'order2',
+  //       component: () => import('@/views/order/index2'),
+  //       name: 'order2',
+  //       meta: { title: '积分排行', icon: 'list', noCache: false},
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '',
   //   component: Layout,
   //   redirect: 'syslog',
   //   children: [
