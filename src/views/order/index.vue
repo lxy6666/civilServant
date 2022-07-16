@@ -914,11 +914,22 @@ export default {
               if(!that.query.hyzk||that.query.hyzk==""){
                 //提报员只能看自己社区的人员
                 let arr = []
+                console.info(that.userInfo.role,'userInfo.role',that.userInfo.jdmc)
                 if(that.userInfo.role == 1){
                   arr = response.data.filter(item => {
                     return that.getPart(item.hyzk) == that.userInfo.ssbm
                   })
+                //审核员排行榜只能看到自己街道的人
+                }else if(that.userInfo.role == 2){
+                  arr = response.data.filter(item => {
+                    console.info('item',item.jdmc)
+                    if(item.jdmc){
+                      console.info(item)
+                    }
+                    return item.jdmc == that.userInfo.jdmc
+                  })
                 }else{
+                    
                   arr = response.data;
                 }
                 that.tableData = arr;
