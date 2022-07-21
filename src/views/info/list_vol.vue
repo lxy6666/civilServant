@@ -720,7 +720,7 @@ export default {
      setDqtime(val){
         let that = this;
         let s = val.split('-')
-        let year = Number(s[0])+1
+        let year = Number(s[0])
         let fuday = year+'-'+s[1]+'-'+s[2]
         that.addForm.zytime= fuday;
       },
